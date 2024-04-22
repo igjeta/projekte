@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<nav>
+    <div>
+        <h2>Akademia</h2>
+    </div>
+    <ul>
+        <li>
+            <a href="/engine">Engines</a>
+        </li>
+        <li>
+            <a href="/wheels">Wheels</a>
+        </li>
+        <li>
+            <a href="/cars">Cars</a>
+    </ul>
+</nav>
+<div>
+
+    <div>
+        <h2>CARS</h2>
+        <button>
+            <a th:href="@{/cars/form}">Add Car</a>
+        </button>
+
+    </div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            From year
+        </th>
+        <th>
+            To Year
+        </th>
+        <th>
+            Type
+        </th>
+
+        <th>
+            Engine Power
+        </th>
+        <th>
+            Engine Type
+        </th>
+        <th>
+            Wheels Size
+        </th>
+        <th>
+            Wheels Type
+        </th>
+        <th>
+            <span>Edit</span>
+        </th>
+        <th>
+            <span>Delete</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${cars}">
+        <td th:text="${c.id}">
+            1
+        </td>
+        <td th:text="${c.name}">
+            Aspire
+        </td>
+        <td th:text="${c.fromYear}">
+            1994
+        </td>
+        <td th:text="${c.toYear}">
+            1997
+        </td>
+        <td th:text="${c.type}">
+            subcompact
+        </td>
+        <td th:text="${c.engine.power}">
+            1400
+        </td>
+        <td th:text="${c.engine.type}">
+            GAS
+        </td>
+        <td th:text="${c.wheels.size}">
+            R15
+        </td>
+        <td th:text="${c.wheels.type}">
+            STEEL
+        </td>
+        <td class="">
+            <a th:href="@{/cars/form?car={carId}(carId=${c.id})}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/cars/{id}/delete(id=${c.id})}">Delete</a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+</body>

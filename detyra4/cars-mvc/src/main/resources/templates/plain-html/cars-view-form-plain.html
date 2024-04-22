@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<nav>
+    <div>
+        <h2>Akademia</h2>
+    </div>
+    <ul>
+        <li>
+            <a href="">Cars</a>
+        </li>
+        <li>
+            <a href="">Engines</a>
+        </li>
+        <li>
+            <a href="">Wheels</a>
+    </ul>
+</nav>
+<!-- Code block header starts -->
+<div>
+    <h2>Car Registration</h2>
+
+    <form th:action="@{/cars}" th:object="${car}" th:method="post">
+
+        <input th:field="*{id}" type="hidden"/>
+        <input th:field="*{name}" type="text" placeholder="Car Name "/>
+        <input th:field="*{type}" type="text" placeholder="Car Type"/>
+        <input th:field="*{fromYear}" type="text" placeholder="From Year "/>
+        <input th:field="*{toYear}" type="text" placeholder="To Year"/>
+
+        <div>
+            <select th:field="*{engine.id}" placeholder="Select car engine type">
+                <option value="">Select car engine type</option>
+                <option th:each="engine : ${enginesList}" th:value="${engine.id}" th:text="${engine.type}"></option>
+            </select>
+            <select th:field="*{wheels.id}" placeholder="Select car wheels type">
+                <option value="">Select car wheels type</option>
+                <option th:each="wheels : ${wheelsList}" th:value="${wheels.id}" th:text="${wheels.type}"></option>
+            </select>
+
+        </div>
+        <div>
+            <button th:type="submit">
+                Submit
+            </button>
+        </div>
+    </form>
+    <!-- Code block form end -->
+</div>
+</body>

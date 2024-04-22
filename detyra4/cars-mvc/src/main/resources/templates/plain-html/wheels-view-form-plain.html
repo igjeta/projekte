@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<nav>
+    <div>
+        <h2>Akademia</h2>
+    </div>
+    <ul>
+        <li>
+            <a href="">Engines</a>
+        </li>
+        <li>
+            <a href="">Engines</a>
+        </li>
+        <li>
+            <a href="">Wheels</a>
+    </ul>
+</nav>
+<div>
+    <h2>Wheels Registration</h2>
+
+    <form th:action="@{/wheels}" th:object="${wheels}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <input type="text" th:field="*{type}" placeholder="Wheel Type">
+        <input type="text" th:field="*{size}" placeholder="Wheel Size">
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <!-- Code block form end -->
+</div>
+</body>

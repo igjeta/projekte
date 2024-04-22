@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<nav>
+    <div>
+        <h2>Akademia</h2>
+    </div>
+    <ul>
+        <li>
+            <a href="/engine">Engines</a>
+        </li>
+        <li>
+            <a href="/wheels">Wheels</a>
+        </li>
+        <li>
+            <a href="/cars">Cars</a>
+    </ul>
+</nav>
+<div>
+
+    <div>
+        <h2>Wheels</h2>
+        <button>
+            <a th:href="@{/wheels/form}">Add Wheel</a>
+        </button>
+
+    </div>
+</div>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Wheel Size
+        </th>
+        <th>
+            Wheel Type
+        </th>
+        <th>
+            <a>Edit</a>
+        </th>
+        <th>
+            <a>Delete</a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="w : ${wheels}">
+        <td th:text="${w.id}"></td>
+        <td th:text="${w.size}"></td>
+        <td th:text="${w.type}"></td>
+        <td>
+            <a th:href="@{/wheels/form?wheels={wheelsId}(wheelsId=${w.id})}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/wheels/{id}/delete(id=${w.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
